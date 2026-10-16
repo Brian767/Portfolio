@@ -1,0 +1,50 @@
+/* Navbar styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3em 1.5em;
+  font-weight: 600;
+
+}
+nav {
+  display: flex;
+  background-color: #fffffd;
+  padding: 1em 2em;
+  border-radius: 100px;
+
+
+}
+
+.nav-links {
+  display: flex;
+  gap: 3.2em;
+}
+
+a.active {
+  color: #f4f3ee;
+  padding:0.2em .5em;
+  border-radius: 100px;
+  background-color: #22333b;
+}
+a {
+  text-decoration: none;
+  color: #463f3a;
+  font-size: 1.4rem;
+}
+
+/* Hero styles */
+
+.hero {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Projects styles */
+
+.projects {
+  background-color: #8a817c;
+}
