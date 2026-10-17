@@ -26,21 +26,21 @@ header.hidden {
 
 /* Navbar styles */
 #navbar {
-  display:flex;
+  display: flex;
   position: fixed;
-  bottom: 4.5em;
+  bottom: 3.5em;
   left: 50%;
   transform: translateX(-50%);
 
   background-color: #fffffd;
-  
+
   border-radius: 100px;
-  padding: 1em .8em;
+  padding: 1em 0.8em;
 }
 
 .nav-links {
   display: flex;
-  gap: .4em;
+  gap: 0.4em;
   text-decoration: none;
 }
 
@@ -59,30 +59,65 @@ a {
     border-radius 0.3s ease;
 }
 
-
-.nav-links a{
+.nav-links a {
   padding: 0.33em 1em;
   border-radius: 100px;
-
 }
-ul{
+ul {
   padding: 0;
   margin: 0;
 }
 
-li{
+li {
   text-decoration: none;
   list-style: none;
 }
 
-/* Hero styles */
+/* Home styles */
 
-.hero {
-  text-align: center;
+#home {
+  text-align: left;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: left;
+
+background-color: #f4f3ee;
+opacity: 1;
+background-image: radial-gradient(circle, #d9d8d7 0.96px, transparent 0.96px);
+background-size: 12px 12px;
+}
+
+.home-content {
+  max-width: 600px;
+  /* margin: 0 rem; */
+  padding: 0 1.5em;
+  opacity: 1;
+}
+
+.home-content h1 {
+  opacity: 1;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.home-content p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.home-content .home-anchor {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #22333b;
+  color: #f4f3ee;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: background-color 0.3s ease;
+}
+.home-content .home-anchor:hover {
+  background-color: #8a817c;
 }
 
 /* Projects styles */

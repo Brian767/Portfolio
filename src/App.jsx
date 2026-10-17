@@ -4,7 +4,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Home from "./components/Home";
 import Projects from "./components/Projects";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <Header />
-      <Hero />
+      <Home />
       <Projects />
       <About />
       <Contact />
