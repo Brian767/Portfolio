@@ -1,4 +1,4 @@
-/* Navbar styles */
+/* Header styles */
 header {
   display: flex;
   justify-content: space-between;
@@ -6,31 +6,73 @@ header {
   padding: 1.3em 1.5em;
   font-weight: 600;
 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+
+  transition: transform 0.3s ease;
 }
-nav {
-  display: flex;
+
+header.visible {
+  transform: translateY(0);
+}
+
+header.hidden {
+  transform: translateY(-100%);
+}
+
+/* Navbar styles */
+#navbar {
+  display:flex;
+  position: fixed;
+  bottom: 4.5em;
+  left: 50%;
+  transform: translateX(-50%);
+
   background-color: #fffffd;
-  padding: 1em 2em;
+  
   border-radius: 100px;
-
-
+  padding: 1em .8em;
 }
 
 .nav-links {
   display: flex;
-  gap: 3.2em;
+  gap: .4em;
+  text-decoration: none;
 }
 
 a.active {
   color: #f4f3ee;
-  padding:0.2em .5em;
-  border-radius: 100px;
   background-color: #22333b;
 }
 a {
   text-decoration: none;
   color: #463f3a;
-  font-size: 1.4rem;
+  font-size: 1rem;
+
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-radius 0.3s ease;
+}
+
+
+.nav-links a{
+  padding: 0.33em 1em;
+  border-radius: 100px;
+
+}
+ul{
+  padding: 0;
+  margin: 0;
+}
+
+li{
+  text-decoration: none;
+  list-style: none;
 }
 
 /* Hero styles */
@@ -45,6 +87,19 @@ a {
 
 /* Projects styles */
 
-.projects {
+#projects {
   background-color: #8a817c;
+  height: 100vh;
+}
+
+/* About styles */
+#about {
+  background-color: #f4f3ee;
+  height: 100vh;
+}
+
+/* Contact styles */
+#contact {
+  background-color: #463f3a;
+  height: 100vh;
 }
