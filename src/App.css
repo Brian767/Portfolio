@@ -88,7 +88,6 @@ opacity: 1;
 background-image: radial-gradient(circle, #d9d8d7 0.96px, transparent 0.96px);
 background-size: 12px 12px;
 }
-
 .home-content {
   max-width: 600px;
   /* margin: 0 rem; */
@@ -123,18 +122,38 @@ background-size: 12px 12px;
 /* Projects styles */
 
 #projects {
-  background-color: #8a817c;
-  height: 100vh;
+  
+  border-top: 20px dotted #463f3a;
+  border-bottom: 20px dotted #463f3a;
+}
+
+.projects-title{
+  padding: 2rem 0 0 2rem;
+}
+
+.projects-content {
+  max-width: 800px;
+  
+  padding: 2rem;
+  
+}
+
+/* Project styles */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* About styles */
 #about {
   background-color: #f4f3ee;
   height: 100vh;
+  padding: 2rem;
 }
 
 /* Contact styles */
 #contact {
-  background-color: #463f3a;
   height: 100vh;
 }
