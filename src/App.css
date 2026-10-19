@@ -1,3 +1,4 @@
+
 /* Header styles */
 header {
   display: flex;
@@ -123,12 +124,12 @@ background-size: 12px 12px;
 
 #projects {
   
-  border-top: 20px dotted #463f3a;
-  border-bottom: 20px dotted #463f3a;
+  background-color: #8a817c;
 }
 
 .projects-title{
   padding: 2rem 0 0 2rem;
+  color: #f4f3ee;
 }
 
 .projects-content {
@@ -139,11 +140,47 @@ background-size: 12px 12px;
 }
 
 /* Project styles */
+
+.project {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #fffffd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(34, 51, 59, 0.12);
+}
+
+.project h3 {
+  margin-top: 1em;
+
+}
 img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+}
+
+.project-description {
+  margin-top: 1em;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #463f3a;
+} 
+.project-technology {
+  margin-top: 1em;
+  font-size: 1rem;
+  
+}
+.project-link {
+  margin-top: 1em;
+  display: inline-flex;
+  gap: 1rem;
+  background-color: #22333b;
+  color: #f4f3ee;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 100px;
+  transition: background-color 0.3s ease;
 }
 
 /* About styles */
