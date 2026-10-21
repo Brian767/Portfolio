@@ -29,9 +29,9 @@ export default function Header() {
 
   return (
     <header className={isVisible ? "header visible" : "header hidden"}>
-      <a href="/">Brian Ramirez Ortega</a>
+      <a className="headerName" href="/">Brian Ramirez Ortega</a>
       <div className="header-contacts">
-        <a href="#contact">Contact</a>
+        <a className="header-link" href="#contact">Contact</a>
       </div>
     </header>
   );

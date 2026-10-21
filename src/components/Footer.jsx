@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
-        <footer className="footer">
-            <p>&copy; 2024 Brian Ramirez. All rights reserved.</p>
+        <footer id="footer">
+            <p>2026 Brian Ramirez Ortega</p>
         </footer>
     )
 }
