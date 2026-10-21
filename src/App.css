@@ -32,51 +32,81 @@ header.hidden {
 
 /* Navbar styles */
 #navbar {
-  display: flex;
   position: fixed;
-  bottom: 3.5em;
+  bottom: max(1.5rem, env(safe-area-inset-bottom));
   left: 50%;
   transform: translateX(-50%);
+  z-index: 100;
 
-  background-color: #fffffd;
-
+  padding: 0.5rem;
   border-radius: 100px;
-  padding: 1em 0.8em;
+  background-color: rgba(255, 255, 253, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(34, 51, 59, 0.15);
 }
 
 .nav-links {
+  position: relative; /* the indicator is positioned relative to this */
   display: flex;
-  gap: 0.4em;
-  text-decoration: none;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-a.active {
-  color: #f4f3ee;
+/* The sliding pill */
+.nav-indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 100px;
   background-color: #22333b;
+  z-index: 0;
+  pointer-events: none;
 }
-a {
+
+.nav-indicator.ready {
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Links sit above the indicator */
+.nav-links a {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 0.5rem 1.1rem;
+  border-radius: 100px;
+  font-size: 1rem;
   text-decoration: none;
   color: #463f3a;
-  font-size: 1.2rem;
-
   transition:
     color 0.3s ease,
-    background-color 0.3s ease,
-    border-radius 0.3s ease;
+    background-color 0.3s ease;
 }
 
-.nav-links a {
-  padding: 0.33em 1em;
-  border-radius: 100px;
-}
-ul {
-  padding: 0;
-  margin: 0;
+/* Hover only on inactive links */
+.nav-links a:not(.active):hover {
+  background-color: rgba(34, 51, 59, 0.08);
 }
 
-li {
-  text-decoration: none;
-  list-style: none;
+/* Active link no longer needs its own background, the indicator provides it */
+.nav-links a.active {
+  color: #f4f3ee;
+}
+
+.nav-links a:focus-visible {
+  outline: 2px solid #22333b;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-indicator.ready {
+    transition: none;
+  }
 }
 
 /* Home styles */
@@ -195,7 +225,7 @@ img {
 
 .about-content {
   padding: 1rem;
-  background-color:#f4f3ee;
+  background-color: #f4f3ee;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(34, 51, 59, 0.12);
 }
@@ -222,7 +252,6 @@ img {
   align-items: left;
   padding: 1rem 1.5em 4rem 1.5em;
   gap: 1rem;
-  
 }
 
 .contact-title {
@@ -230,11 +259,11 @@ img {
   margin-bottom: 1rem;
 }
 .contact-description {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
-  background-color:#f4f3ee;
+  background-color: #f4f3ee;
   color: #463f3a;
   font-size: 1.25rem;
   line-height: 1.6;

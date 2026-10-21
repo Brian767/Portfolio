@@ -1,4 +1,3 @@
-
 :root {
   --color-background: #f4f3ee;
   --color-text: #463f3a;
@@ -6,19 +5,35 @@
   --font-family-paragraph: "Lora", serif;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+body {
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-family-heading);
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
   padding: 0;
 }
-
