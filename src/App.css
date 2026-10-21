@@ -1,12 +1,5 @@
 /* Header styles */
-header {
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.3em 1.5em;
-  font-weight: 600;
-
+.header {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,22 +7,88 @@ header {
   box-sizing: border-box;
   z-index: 1000;
 
-  transition: transform 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3rem 1.5rem;
+
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    padding 0.3s ease,
+    border-color 0.3s ease,
+    visibility 0s;
 }
 
-header a {
-  text-decoration: none;
-  font-size: 1.3rem;
+/* Frosted background once the user scrolls away from the top */
+.header.scrolled {
+  padding: 0.9rem 1.5rem;
+  background-color: rgba(244, 243, 238, 0.8); /* match your page background */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: rgba(34, 51, 59, 0.08);
 }
 
-header.visible {
+.header.visible {
   transform: translateY(0);
+  visibility: visible;
 }
 
-header.hidden {
+/* visibility flips after the slide-out finishes, removing hidden links from tab order */
+.header.hidden {
   transform: translateY(-100%);
+  visibility: hidden;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    padding 0.3s ease,
+    border-color 0.3s ease,
+    visibility 0s 0.3s;
 }
 
+.header a {
+  text-decoration: none;
+  color: #463f3a;
+}
+
+.header-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Contact as a pill that echoes the bottom nav */
+.header-link {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  border: 1.5px solid #22333b;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.header-link:hover {
+  background-color: #22333b;
+  color: #f4f3ee;
+}
+
+.header a:focus-visible {
+  outline: 2px solid #22333b;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .header.hidden {
+    transition: none;
+  }
+}
 /* Navbar styles */
 #navbar {
   position: fixed;
@@ -40,7 +99,7 @@ header.hidden {
 
   padding: 0.5rem;
   border-radius: 100px;
-  background-color: rgba(255, 255, 253, 0.85);
+  background-color: rgba(255, 255, 253, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 8px 30px rgba(34, 51, 59, 0.15);
