@@ -1,15 +1,25 @@
 export default function Home() {
   return (
-    <section id="home">
+    <section id="home" className="home">
       <div className="home-content">
-        <h1>Hi! I'm Brian</h1>
-        <p>
-          A frontend developer passionate about creating engaging user
-          experiences.
+        <p className="home-eyebrow">Frontend Developer</p>
+        <h1 className="home-title">Hi, I'm Brian.</h1>
+        <p className="home-tagline">
+          I build fast, accessible React interfaces that are a pleasure to use.
         </p>
-        <a href="#projects" className="home-anchor">
-          View My Work
-        </a>
+        <div className="home-actions">
+          <a href="#projects" className="home-btn home-btn-primary">
+            View My Work
+          </a>
+          <a
+            href="https://github.com/Brian767"
+            className="home-btn home-btn-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
       </div>
     </section>
   );
