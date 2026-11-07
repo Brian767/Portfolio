@@ -3,6 +3,18 @@
   --page-gutter: clamp(1.1rem, 5vw, 5rem);
   --color-background: #f4f3ee;
   --color-text: #463f3a;
+  --color-ink: #22333b;
+  --color-muted: #5e5750;
+  --color-muted-on-dark: #c9c6c0;
+  --color-dark-surface: #1a272d;
+  --color-ink-hover: #3a4f59;
+  --color-background-hover: #e4e2da;
+  --color-placeholder: #d9d8d7;
+  --color-grid-dot: #d0cfcc;
+  --color-success: #9fe1cb;
+  --color-error: #ffb4a9;
+  --color-ink-tint: rgba(34, 51, 59, 0.08);
+  --color-light-border: rgba(244, 243, 238, 0.1);
   --font-family-heading: "Nunito", sans-serif;
   --font-family-paragraph: "Lora", serif;
 }

@@ -21,14 +21,17 @@ function fallbackCopy(text) {
   textarea.style.position = "absolute";
   textarea.style.left = "-9999px";
   document.body.appendChild(textarea);
-  textarea.select();
-  const ok = document.execCommand("copy");
-  document.body.removeChild(textarea);
-  return ok;
+  try {
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+    return document.execCommand("copy");
+  } finally {
+    document.body.removeChild(textarea);
+  }
 }
 
 export default function Contact() {
-  const [copied, setCopied] = useState(false);
+  const [copyStatus, setCopyStatus] = useState("");
   const timer = useRef(null);
 
   useEffect(() => () => clearTimeout(timer.current), []);
@@ -36,16 +39,25 @@ export default function Contact() {
   const handleCopy = async () => {
     let ok = false;
     try {
-      await navigator.clipboard.writeText(EMAIL);
-      ok = true;
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(EMAIL);
+        ok = true;
+      }
     } catch {
-      ok = fallbackCopy(EMAIL);
+      // Try the fallback below when the Clipboard API is blocked or unavailable.
     }
-    if (!ok) return;
 
-    setCopied(true);
+    if (!ok) {
+      try {
+        ok = fallbackCopy(EMAIL);
+      } catch {
+        ok = false;
+      }
+    }
+
     clearTimeout(timer.current);
-    timer.current = setTimeout(() => setCopied(false), 2000);
+    setCopyStatus(ok ? "copied" : "failed");
+    timer.current = setTimeout(() => setCopyStatus(""), 3000);
   };
 
   return (
@@ -69,27 +81,44 @@ export default function Contact() {
 
         <ul className="contact-links">
           <li>
-            <button
-              type="button"
-              className={`contact-card ${copied ? "is-copied" : ""}`}
-              onClick={handleCopy}
+            <div
+              className={`contact-card contact-email-card ${copyStatus ? `is-${copyStatus}` : ""}`}
             >
-              <span className="contact-card-icon" aria-hidden="true">
-                <FiMail />
-              </span>
-              <span className="contact-card-text">
-                <span className="contact-card-label">
-                  {copied ? "Copied to clipboard" : "Email"}
+              <a className="contact-card-email-link" href={`mailto:${EMAIL}`}>
+                <span className="contact-card-icon" aria-hidden="true">
+                  <FiMail />
                 </span>
-                <span className="contact-card-value">{EMAIL}</span>
-              </span>
-              <span className="contact-card-action" aria-hidden="true">
-                {copied ? <FiCheck /> : <FiCopy />}
-              </span>
-            </button>
-            <span className="sr-only" role="status" aria-live="polite">
-              {copied ? "Email address copied to clipboard" : ""}
-            </span>
+                <span className="contact-card-text">
+                  <span className="contact-card-label">Email</span>
+                  <span className="contact-card-value">{EMAIL}</span>
+                </span>
+              </a>
+              <button
+                type="button"
+                className="contact-card-copy"
+                onClick={handleCopy}
+                aria-label={
+                  copyStatus === "copied"
+                    ? "Copy email address again"
+                    : "Copy email address"
+                }
+              >
+                <span className="contact-card-action" aria-hidden="true">
+                  {copyStatus === "copied" ? <FiCheck /> : <FiCopy />}
+                </span>
+              </button>
+            </div>
+            {copyStatus && (
+              <p
+                className={`contact-copy-status ${copyStatus === "failed" ? "is-error" : ""}`}
+                role="status"
+                aria-live="polite"
+              >
+                {copyStatus === "copied"
+                  ? "Email address copied."
+                  : "Could not copy the email address. Use the email link to compose a message."}
+              </p>
+            )}
           </li>
 
           <li>

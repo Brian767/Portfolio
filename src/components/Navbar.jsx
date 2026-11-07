@@ -126,16 +126,18 @@ export default function Navbar() {
   return (
     <nav id="navbar" aria-label="Primary">
       <ul className="nav-links" ref={listRef}>
-        <span
-          className={`nav-indicator ${ready ? "ready" : ""}`}
-          style={{
-            width: indicator.width,
-            transform: `translateX(${indicator.left}px)`,
-          }}
-          aria-hidden="true"
-        />
         {NAV_LINKS.map((link) => (
           <li key={link.id}>
+            {link.id === NAV_LINKS[0].id && (
+              <span
+                className={`nav-indicator ${ready ? "ready" : ""}`}
+                style={{
+                  width: indicator.width,
+                  transform: `translateX(${indicator.left}px)`,
+                }}
+                aria-hidden="true"
+              />
+            )}
             <a
               href={`#${link.id}`}
               ref={(el) => (linkRefs.current[link.id] = el)}

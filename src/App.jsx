@@ -9,18 +9,25 @@ import Footer from "./components/Footer";
 
 import "./App.css";
 
+const PROJECTS = [
+  {
+    title: "PIKA BNDR",
+    description:
+      "Search Pokémon TCG cards, track your collection and estimated market value, and organize cards in a nine-pocket digital binder. Your collection and binder are saved on your device.",
+    technologies: ["React", "React Router", "Vite", "TCGdex API", "localStorage"],
+    repo: "https://github.com/Brian767/Poke-Binder",
+  },
+];
+
 function App() {
   return (
     <>
       <Header />
       <Home />
       <Projects>
-        <Project
-          title="PIKA BNDR"
-          description="Search Pokémon TCG cards, track your collection and estimated market value, and organize cards in a nine-pocket digital binder. Your collection and binder are saved on your device."
-          technologies={["React", "React Router", "Vite", "TCGdex API", "localStorage"]}
-          repo="https://github.com/Brian767/Poke-Binder"
-        />
+        {PROJECTS.map((project) => (
+          <Project key={project.title} {...project} />
+        ))}
       </Projects>
       <About />
       <Contact />
