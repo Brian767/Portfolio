@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.3rem 1.5rem;
+  padding: 1.3rem max(var(--page-gutter), calc((100% - var(--content-max-width)) / 2));
 
   background-color: transparent;
   border-bottom: 1px solid transparent;
@@ -24,7 +24,7 @@
 
 /* Frosted background once the user scrolls away from the top */
 .header.scrolled {
-  padding: 0.9rem 1.5rem;
+  padding: 0.9rem max(var(--page-gutter), calc((100% - var(--content-max-width)) / 2));
   background-color: rgba(244, 243, 238, 0.8); /* match your page background */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -83,6 +83,23 @@
   border-radius: 6px;
 }
 
+@media (max-width: 420px) {
+  .header,
+  .header.scrolled {
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
+  }
+
+  .header-name {
+    font-size: 1rem;
+  }
+
+  .header-link {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.9rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .header,
   .header.hidden {
@@ -92,7 +109,7 @@
 /* Navbar styles */
 #navbar {
   position: fixed;
-  bottom: max(1.5rem, env(safe-area-inset-bottom));
+  bottom: max(1rem, env(safe-area-inset-bottom));
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
@@ -162,6 +179,21 @@
   outline-offset: 2px;
 }
 
+@media (max-width: 360px) {
+  #navbar {
+    padding: 0.35rem;
+  }
+
+  .nav-links {
+    gap: 0.1rem;
+  }
+
+  .nav-links a {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.9rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .nav-indicator.ready {
     transition: none;
@@ -180,8 +212,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  padding: 6rem 1.5rem 7rem; /* top clears the header, bottom clears the nav */
+  align-items: center;
+  padding: 6rem var(--page-gutter) 7rem; /* top clears the header, bottom clears the nav */
   box-sizing: border-box;
   background-color: var(--bg);
   overflow: hidden;
@@ -201,7 +233,10 @@
 
 .home-content {
   position: relative; /* sits above the dot layer */
-  max-width: 640px;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  text-align: left;
 }
 
 .home-eyebrow {
@@ -223,7 +258,7 @@
 
 .home-tagline {
   margin: 0;
-  max-width: 34ch;
+  max-width: 42ch;
   font-size: clamp(1.1rem, 2.5vw, 1.35rem);
   line-height: 1.6;
   color: var(--muted);
@@ -233,6 +268,7 @@
 .home-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 0.75rem;
   margin-top: 2rem;
 }
@@ -279,6 +315,60 @@
   outline-offset: 3px;
 }
 
+@media (min-width: 760px) {
+  .home {
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
+  }
+
+  .home-content {
+    max-width: var(--content-max-width);
+  }
+
+  .home-title {
+    font-size: clamp(4.5rem, 8vw, 8.5rem);
+  }
+
+  .home-tagline {
+    max-width: 42ch;
+    font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  }
+
+  .home-actions {
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .home-btn {
+    padding: 0.95rem 1.9rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .home {
+    padding: 5.5rem 1.1rem 6.5rem;
+  }
+
+  .home-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+  }
+
+  .home-title {
+    font-size: clamp(2.5rem, 12vw, 3.25rem);
+  }
+
+  .home-actions {
+    gap: 0.6rem;
+  }
+
+  .home-btn {
+    padding: 0.75rem 1.1rem;
+    font-size: 0.95rem;
+  }
+}
+
 /* Staggered entrance */
 .home-content > *,
 .home-actions {
@@ -316,11 +406,11 @@
 /* Projects section */
 .projects {
   background-color: #22333b;
-  padding: 5rem 1.5rem 8rem; /* bottom space keeps the floating nav off the last card */
+  padding: 5rem var(--page-gutter) 8rem; /* bottom space keeps the floating nav off the last card */
 }
 
 .projects-inner {
-  max-width: 1100px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
@@ -342,10 +432,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: 1.5rem;
+  justify-items: start;
 }
 
 /* Project card */
 .project {
+  width: 100%;
+  max-width: 760px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -480,11 +573,11 @@
 /* About */
 .about {
   background-color: #f4f3ee;
-  padding: 5rem 1.5rem 8rem; /* bottom space keeps the floating nav clear */
+  padding: 5rem var(--page-gutter) 8rem; /* bottom space keeps the floating nav clear */
 }
 
 .about-inner {
-  max-width: 1100px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -567,13 +660,20 @@
 /* Two columns on larger screens */
 @media (min-width: 760px) {
   .about-inner {
-    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
-    gap: 4rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+    gap: clamp(2rem, 5vw, 4rem);
   }
 
   .about-photo {
     width: 100%;
     margin: 0;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .about-content {
+    grid-column: 1;
+    grid-row: 1;
   }
 }
 
@@ -581,11 +681,11 @@
 .contact {
   background-color: #22333b;
   color: #f4f3ee;
-  padding: 5rem 1.5rem 8rem; /* bottom space keeps the floating nav clear */
+  padding: 5rem var(--page-gutter) 8rem; /* bottom space keeps the floating nav clear */
 }
 
 .contact-inner {
-  max-width: 1100px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -724,7 +824,7 @@
 @media (min-width: 760px) {
   .contact-inner {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-    gap: 4rem;
+    gap: clamp(2rem, 5vw, 4rem);
   }
 }
 
@@ -746,11 +846,11 @@
   color: #c9c6c0;
   border-top: 1px solid rgba(244, 243, 238, 0.1);
   /* extra bottom padding keeps the floating nav off the footer content */
-  padding: 1.5rem 1.5rem 6rem;
+  padding: 1.5rem var(--page-gutter) 6rem;
 }
 
 .footer-inner {
-  max-width: 1100px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;

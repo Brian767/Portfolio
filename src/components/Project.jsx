@@ -32,22 +32,24 @@ export default function Project({
         </ul>
 
         <div className="project-links">
-          <a
-            className="project-link project-link-primary"
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Project<span className="sr-only">: {title}</span>
-          </a>
+          {link && (
+            <a
+              className="project-link project-link-primary"
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Project<span className="sr-only">: {title}</span>
+            </a>
+          )}
           {repo && (
             <a
-              className="project-link project-link-secondary"
+              className={`project-link ${link ? "project-link-secondary" : "project-link-primary"}`}
               href={repo}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Source Code<span className="sr-only">: {title}</span>
+              View source code<span className="sr-only">: {title}</span>
             </a>
           )}
         </div>

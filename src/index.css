@@ -1,4 +1,6 @@
 :root {
+  --content-max-width: 1100px;
+  --page-gutter: clamp(1.1rem, 5vw, 5rem);
   --color-background: #f4f3ee;
   --color-text: #463f3a;
   --font-family-heading: "Nunito", sans-serif;
@@ -10,6 +12,12 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 html {
