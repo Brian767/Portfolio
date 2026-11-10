@@ -11,7 +11,7 @@ import {
 const EMAIL = "brianramirezbro@gmail.com";
 const LINKEDIN_URL = "https://www.linkedin.com/in/brianramirezo/";
 const GITHUB_URL = "https://github.com/Brian767";
-const RESUME_URL = "/Brian-Ramirez-Ortega-Resume.pdf"; // file lives in /public
+const RESUME_URL = "/BrianRamirezResume.pdf"; // file lives in /public
 
 // Used when the Clipboard API isn't available (e.g. non-HTTPS)
 function fallbackCopy(text) {
@@ -72,7 +72,7 @@ export default function Contact() {
           <a
             className="contact-resume"
             href={RESUME_URL}
-            download="Brian-Ramirez-Ortega-Resume.pdf"
+            download="BrianRamirezResume.pdf"
           >
             <FiDownload aria-hidden="true" />
             Download resume
