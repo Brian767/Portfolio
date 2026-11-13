@@ -6,6 +6,7 @@ export default function Project({
   image,
   imageAlt,
   link,
+  linkLabel = "View Project",
   repo, // optional: link to source code
 }) {
   return (
@@ -39,7 +40,7 @@ export default function Project({
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Project<span className="sr-only">: {title}</span>
+              {linkLabel}<span className="sr-only">: {title}</span>
             </a>
           )}
           {repo && (
